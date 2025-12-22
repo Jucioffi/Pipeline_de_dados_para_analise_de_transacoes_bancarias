@@ -104,9 +104,20 @@ Diante dessas restrições, foi adotada uma solução técnica baseada no uso de
 
 ---
 
-## Considerações Finais
+## Considerações Finais e Autoavaliação
 
-O MVP desenvolvido atende aos requisitos propostos, demonstrando a construção de um pipeline de dados, documentado e alinhado às boas práticas de engenharia de dados em nuvem. A solução proposta estabelece uma base para futuras extensões, como a integração com ferramentas de visualização, monitoramento em tempo real ou modelos analíticos mais avançados.
+O MVP desenvolvido atende aos requisitos propostos, contemplando de forma consistente todas as etapas exigidas para a construção de um pipeline de dados em nuvem: busca, coleta, modelagem, carga e análise. A solução implementada permitiu transformar um conjunto de dados bruto em uma base analítica estruturada, documentada e alinhada às boas práticas de engenharia de dados, utilizando a arquitetura Bronze–Silver–Gold.
+
+Durante o desenvolvimento, um dos principais desafios enfrentados esteve relacionado às **limitações técnicas do Databricks Community Edition**, especialmente no que diz respeito à ingestão de dados diretamente a partir de fontes externas em nuvem. Foram realizadas tentativas de importação do dataset a partir de um **bucket no Amazon S3** e também via **Google Cloud Storage**, porém ambas as abordagens apresentaram restrições na versão Community da plataforma, impedindo a leitura direta dos dados por meio de URLs ou conectores nativos sem o uso de credenciais ou recursos pagos.
+
+Essas limitações impactaram a estratégia inicial de ingestão, exigindo um maior aprofundamento na compreensão do ambiente do Databricks e levando à adoção de uma solução alternativa baseada no uso de **Volumes (Unity Catalog)** como área de aterrissagem dos dados. Essa decisão permitiu manter o armazenamento em nuvem, garantir governança, rastreabilidade e reprodutibilidade do pipeline, transformando uma restrição da plataforma em uma escolha arquitetural consciente.
+
+Outro aspecto desafiador foi equilibrar o **rigor técnico da implementação** com a **clareza documental exigida pelo trabalho**, uma vez que o projeto demandou não apenas a execução do pipeline, mas também a explicitação das decisões de modelagem, dos processos de transformação e das análises realizadas. Esse esforço contribuiu significativamente para o amadurecimento da visão prática sobre engenharia de dados aplicada.
+
+Apesar das dificuldades encontradas, os objetivos centrais do trabalho foram atingidos, e as perguntas de negócio definidas inicialmente puderam ser exploradas de forma coerente a partir das análises desenvolvidas. Como extensões futuras, o projeto poderia ser enriquecido com a integração de ferramentas de visualização (como Power BI ou Databricks SQL), automação do pipeline e aplicação de modelos analíticos ou preditivos sobre a camada Gold.
+
+De forma geral, o desenvolvimento deste MVP consolidou o entendimento prático sobre pipelines de dados em nuvem e evidenciou a importância de adaptar soluções técnicas às restrições reais das plataformas utilizadas, reforçando a relevância de decisões arquiteturais bem fundamentadas no contexto de projetos de dados.
+
 
 ---
 
